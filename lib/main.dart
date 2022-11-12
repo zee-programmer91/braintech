@@ -137,25 +137,61 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
-            height: 5,
-          ),
+          _space(5),
           BrainTech.navBar(context),
-          const SizedBox(
-            height: 20,
-          ),
+          _space(20),
+          //  Imvelisi Logo
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Image.asset(
               "assets/images/imvelisi-logo.jpg",
               width: 678,
             ),
-          )
+          ),
+          _space(40),
+          //  Sponsors
+          FittedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _sponsorImage("assets/images/first-sponsor.jpg"),
+                _sponsorImage("assets/images/second-sponsor.jpg"),
+                _sponsorImage("assets/images/third-sponsor.jpg"),
+                _sponsorImage("assets/images/fourth-sponsor.png"),
+                _sponsorImage("assets/images/fifth-sponsor.jpg"),
+              ],
+            ),
+          ),
+          _space(40),
+          //  Motto
+          const Text(
+            "Potential Market Opportunities for Entrepreneurs in the Water & Biodiversity Sector",
+            style: TextStyle(color: Colors.green, fontSize: 20),
+          ),
         ],
+      ),
+    );
+  }
+
+  _space(double size) {
+    return SizedBox(
+      height: size,
+    );
+  }
+
+  _sponsorImage(String imagePath) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(5),
+      child: Image.asset(
+        imagePath,
+        height: 100,
+        width: 250,
       ),
     );
   }
