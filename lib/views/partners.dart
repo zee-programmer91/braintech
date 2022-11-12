@@ -19,7 +19,7 @@ class _PartnersState extends State<Partners> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context),
+          BrainTech.navBar(context, false),
           Text("Partners"),
         ],
       ),

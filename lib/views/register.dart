@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 
-class Entrepreneurs extends StatefulWidget {
-  const Entrepreneurs({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  State<Entrepreneurs> createState() => _EntrepreneursState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _EntrepreneursState extends State<Entrepreneurs> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +19,8 @@ class _EntrepreneursState extends State<Entrepreneurs> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, false),
-          Text("Entrepreneurs"),
+          BrainTech.navBar(context, true),
+          const Text("Register"),
         ],
       ),
     );

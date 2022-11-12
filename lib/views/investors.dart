@@ -19,7 +19,7 @@ class _InvestorsState extends State<Investors> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context),
+          BrainTech.navBar(context, false),
           Text("Investors"),
         ],
       ),

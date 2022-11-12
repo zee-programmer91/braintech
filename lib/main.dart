@@ -1,7 +1,7 @@
 import 'package:braintech/views/about.dart';
 import 'package:braintech/views/contact.dart';
 import 'package:braintech/views/investors.dart';
-import 'package:braintech/views/login.dart';
+import 'package:braintech/views/login_register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +24,13 @@ class BrainTech extends StatelessWidget {
     );
   }
 
-  static navBar(BuildContext context) {
+  static space(double size) {
+    return SizedBox(
+      height: size,
+    );
+  }
+
+  static navBar(BuildContext context, bool isLoginView) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -69,15 +75,17 @@ class BrainTech extends StatelessWidget {
           ),
         ),
         //  Login View
-        ElevatedButton(
-          onPressed: () {
-            goToLoginView(context);
-          },
-          child: const Text(
-            "Login",
-            style: TextStyle(fontSize: 30),
-          ),
-        ),
+        !isLoginView
+            ? ElevatedButton(
+                onPressed: () {
+                  goToLoginView(context);
+                },
+                child: const Text(
+                  "Login",
+                  style: TextStyle(fontSize: 30),
+                ),
+              )
+            : Container(),
       ],
     );
   }
@@ -119,7 +127,7 @@ class BrainTech extends StatelessWidget {
   static goToLoginView(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const Login(),
+        builder: (context) => const LoginRegister(),
       ),
     );
   }
@@ -143,9 +151,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          _space(5),
-          BrainTech.navBar(context),
-          _space(20),
+          BrainTech.space(5),
+          BrainTech.navBar(context, false),
+          BrainTech.space(20),
           //  Imvelisi Logo
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -154,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 678,
             ),
           ),
-          _space(40),
+          BrainTech.space(40),
           //  Sponsors
           FittedBox(
             child: Row(
@@ -168,19 +176,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          _space(40),
+          BrainTech.space(40),
           //  Motto
           const Text(
             "Potential Market Opportunities for Entrepreneurs in the Water & Biodiversity Sector",
             style: TextStyle(color: Colors.green, fontSize: 20),
           ),
-          _space(25),
+          BrainTech.space(25),
           Expanded(
               child: Container(
             color: Colors.blue,
             child: Column(
               children: [
-                _space(10),
+                BrainTech.space(10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -222,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               "JOIN NEWSLETTER",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            _space(10),
+                            BrainTech.space(10),
                             ElevatedButtonTheme(
                                 data: ElevatedButtonThemeData(
                                     style: ButtonStyle(
@@ -244,12 +252,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ))
         ],
       ),
-    );
-  }
-
-  _space(double size) {
-    return SizedBox(
-      height: size,
     );
   }
 

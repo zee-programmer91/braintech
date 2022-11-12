@@ -19,8 +19,8 @@ class _LoginState extends State<Login> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context),
-          Text("Login"),
+          BrainTech.navBar(context, true),
+          const Text("Login"),
         ],
       ),
     );

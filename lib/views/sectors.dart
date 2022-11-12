@@ -19,7 +19,7 @@ class _SectorsState extends State<Sectors> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context),
+          BrainTech.navBar(context, false),
           Text("Sectors"),
         ],
       ),

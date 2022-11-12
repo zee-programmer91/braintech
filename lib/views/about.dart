@@ -19,7 +19,7 @@ class _AboutState extends State<About> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context),
+          BrainTech.navBar(context, false),
           Text("About"),
         ],
       ),
