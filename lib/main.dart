@@ -145,7 +145,16 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 5,
           ),
           BrainTech.navBar(context),
-          Text("Home"),
+          const SizedBox(
+            height: 20,
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              "assets/images/imvelisi-logo.jpg",
+              width: 678,
+            ),
+          )
         ],
       ),
     );
