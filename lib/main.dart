@@ -174,6 +174,74 @@ class _MyHomePageState extends State<MyHomePage> {
             "Potential Market Opportunities for Entrepreneurs in the Water & Biodiversity Sector",
             style: TextStyle(color: Colors.green, fontSize: 20),
           ),
+          _space(25),
+          Expanded(
+              child: Container(
+            color: Colors.blue,
+            child: Column(
+              children: [
+                _space(10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: const [
+                            Text(
+                              "ADDRESS",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text("Regus, Twickenham Building,"),
+                            Text("The Campus cnr Sloane and,"),
+                            Text("Main Rd, Bryanston,"),
+                            Text("Johannesburg, 2191"),
+                            Text("South Africa"),
+                          ],
+                        )),
+                    Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: const [
+                            Text(
+                              "CONTACT",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text("PHONE: 011 575 4268"),
+                            Text("EMAIL ADDRESS: imvelisi@greenmatter.co.za"),
+                            Text(""),
+                            Text(""),
+                            Text(""),
+                          ],
+                        )),
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          children: [
+                            const Text(
+                              "JOIN NEWSLETTER",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            _space(10),
+                            ElevatedButtonTheme(
+                                data: ElevatedButtonThemeData(
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.grey))),
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: const Text("EMAIL"))),
+                            const Text(""),
+                            const Text(""),
+                            const Text(""),
+                          ],
+                        ))
+                  ],
+                )
+              ],
+            ),
+          ))
         ],
       ),
     );
