@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class Entrepreneurs extends StatefulWidget {
   const Entrepreneurs({Key? key}) : super(key: key);
 
@@ -10,6 +12,17 @@ class Entrepreneurs extends StatefulWidget {
 class _EntrepreneursState extends State<Entrepreneurs> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(
+            height: 5,
+          ),
+          BrainTech.navBar(context),
+          Text("Entrepreneurs"),
+        ],
+      ),
+    );
   }
 }

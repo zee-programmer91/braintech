@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class Partners extends StatefulWidget {
   const Partners({Key? key}) : super(key: key);
 
@@ -10,6 +12,17 @@ class Partners extends StatefulWidget {
 class _PartnersState extends State<Partners> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(
+            height: 5,
+          ),
+          BrainTech.navBar(context),
+          Text("Partners"),
+        ],
+      ),
+    );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
 
@@ -10,6 +12,17 @@ class Contact extends StatefulWidget {
 class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          const SizedBox(
+            height: 5,
+          ),
+          BrainTech.navBar(context),
+          Text("Contact"),
+        ],
+      ),
+    );
   }
 }
