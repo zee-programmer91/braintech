@@ -40,78 +40,73 @@ class BrainTech extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         //  Home View
-        ElevatedButton(
-          onPressed: () {
-            goToHomeView(context);
-          },
-          child: const Text(
-            "Home",
-            style: TextStyle(fontSize: 20),
+        Expanded(
+          flex: 1,
+          child: ElevatedButton(
+            onPressed: () {
+              goToHomeView(context);
+            },
+            child: const Text(
+              "Home",
+              style: TextStyle(fontSize: 20),
+            ),
           ),
         ),
         //  About View
-        ElevatedButton(
-          onPressed: () {
-            goToAboutView(context);
-          },
-          child: const Text(
-            "About",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        //  Partners View
-        ElevatedButton(
-          onPressed: () {
-            goToPartnersView(context);
-          },
-          child: const Text(
-            "Partners",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        //  Contact View
-        ElevatedButton(
-          onPressed: () {
-            goToContactView(context);
-          },
-          child: const Text(
-            "Contact",
-            style: TextStyle(fontSize: 20),
+        Expanded(
+          flex: 1,
+          child: ElevatedButton(
+            onPressed: () {
+              goToAboutView(context);
+            },
+            child: const Text(
+              "About",
+              style: TextStyle(fontSize: 20),
+            ),
           ),
         ),
         //  Sectors View
         BrainTech.isLoggedIn
-            ? ElevatedButton(
-                onPressed: () {
-                  goToSectorsView(context);
-                },
-                child: const Text(
-                  "Sectors",
-                  style: TextStyle(fontSize: 20),
+            ? Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    goToSectorsView(context);
+                  },
+                  child: const Text(
+                    "Sectors",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               )
             : Container(),
         //  Entrepreneurs View
         BrainTech.isLoggedIn
-            ? ElevatedButton(
-                onPressed: () {
-                  goToEntrepreneursView(context);
-                },
-                child: const Text(
-                  "Entrepreneurs",
-                  style: TextStyle(fontSize: 20),
+            ? Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    goToEntrepreneursView(context);
+                  },
+                  child: const Text(
+                    "Entrepreneurs",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               )
             : Container(),
         //  Login View
         !BrainTech.isLoggedIn
-            ? ElevatedButton(
-                onPressed: () {
-                  goToLoginView(context);
-                },
-                child: const Text(
-                  "Login",
-                  style: TextStyle(fontSize: 20),
+            ? Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    goToLoginView(context);
+                  },
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
               )
             : Container(),
