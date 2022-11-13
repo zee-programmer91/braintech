@@ -1,4 +1,5 @@
 import 'package:braintech/views/about.dart';
+import 'package:braintech/views/chat.dart';
 import 'package:braintech/views/contact.dart';
 import 'package:braintech/views/entrepreneurs.dart';
 import 'package:braintech/views/investors.dart';
@@ -95,6 +96,21 @@ class BrainTech extends StatelessWidget {
                 ),
               )
             : Container(),
+        //  Chat View
+        BrainTech.isLoggedIn
+            ? Expanded(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    goToChatView(context);
+                  },
+                  child: const Text(
+                    "Chat",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              )
+            : Container(),
         //  Login View
         !BrainTech.isLoggedIn
             ? Expanded(
@@ -168,6 +184,14 @@ class BrainTech extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const Entrepreneurs(),
+      ),
+    );
+  }
+
+  static goToChatView(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const Chat(),
       ),
     );
   }
