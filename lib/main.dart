@@ -23,7 +23,7 @@ class BrainTech extends StatelessWidget {
     return MaterialApp(
       title: 'Imvelisi',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.indigo,
       ),
       home: const MyHomePage(title: 'Home Page'),
       debugShowCheckedModeBanner: false,
@@ -120,7 +120,7 @@ class BrainTech extends StatelessWidget {
                     goToLoginView(context);
                   },
                   child: const Text(
-                    "Login",
+                    "Login/Register",
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -310,7 +310,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //  Motto
           const Text(
             "Potential Market Opportunities for Entrepreneurs in the Water & Biodiversity Sector",
-            style: TextStyle(color: Colors.green, fontSize: 20),
+            style: TextStyle(color: Colors.black, fontSize: 20),
           ),
           BrainTech.space(25),
           BrainTech.footer()
