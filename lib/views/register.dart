@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../main.dart';
+import 'dart:async';
+import 'package:flutter/widgets.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -27,7 +30,7 @@ class _RegisterState extends State<Register> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, true),
+          BrainTech.navBar(context),
           BrainTech.space(50),
           Form(
             key: _formKey,
@@ -114,7 +117,9 @@ class _RegisterState extends State<Register> {
                 ],
               ),
             ),
-          )
+          ),
+          BrainTech.space(10),
+          BrainTech.footer()
         ],
       ),
     );

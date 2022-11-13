@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../main.dart';
 
 class Login extends StatefulWidget {
@@ -11,6 +10,12 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  final Map<String, String> loginDetails = {
+    "password": "password@123",
+    "email": "example@email.com"
+  };
+  late String _email;
+  late String _password;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class _LoginState extends State<Login> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, true),
+          BrainTech.navBar(context),
           BrainTech.space(200),
           Form(
             key: _formKey,
@@ -36,6 +41,17 @@ class _LoginState extends State<Login> {
                         hintText: 'Enter your email',
                         labelText: 'Email',
                         border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Email empty";
+                      } else if (value != loginDetails["email"]) {
+                        return "Incorrect Email";
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
                   ),
                   BrainTech.space(10),
                   //  PASSWORD FIELD
@@ -45,15 +61,36 @@ class _LoginState extends State<Login> {
                         hintText: 'Enter your password',
                         labelText: 'Password',
                         border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Password empty";
+                      } else if (value != loginDetails["password"]) {
+                        return "Password incorrect";
+                      }
+                    },
+                    obscureText: true,
+                    onSaved: (value) {
+                      _password = value!;
+                    },
                   ),
                   BrainTech.space(10),
                   Center(
                       child: ElevatedButton(
-                          onPressed: () {}, child: const Text("Submit")))
+                          onPressed: () {
+                            if (!_formKey.currentState!.validate()) {
+                              return;
+                            } else {
+                              _formKey.currentState!.save();
+                              BrainTech.isLoggedIn = true;
+                              BrainTech.goToHomeView(context);
+                            }
+                          },
+                          child: const Text("Submit")))
                 ],
               ),
             ),
-          )
+          ),
+          BrainTech.footer()
         ],
       ),
     );

@@ -1,15 +1,20 @@
 import 'package:braintech/views/about.dart';
 import 'package:braintech/views/contact.dart';
+import 'package:braintech/views/entrepreneurs.dart';
 import 'package:braintech/views/investors.dart';
 import 'package:braintech/views/login_register.dart';
+import 'package:braintech/views/sectors.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
-void main() {
+void main() async {
   runApp(const BrainTech());
 }
 
 class BrainTech extends StatelessWidget {
   const BrainTech({super.key});
+  static bool isLoggedIn = false;
 
   // This widget is the root of your application.
   @override
@@ -30,7 +35,7 @@ class BrainTech extends StatelessWidget {
     );
   }
 
-  static navBar(BuildContext context, bool isLoginView) {
+  static navBar(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -41,7 +46,7 @@ class BrainTech extends StatelessWidget {
           },
           child: const Text(
             "Home",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
         ),
         //  About View
@@ -51,7 +56,7 @@ class BrainTech extends StatelessWidget {
           },
           child: const Text(
             "About",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
         ),
         //  Partners View
@@ -61,7 +66,7 @@ class BrainTech extends StatelessWidget {
           },
           child: const Text(
             "Partners",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
         ),
         //  Contact View
@@ -71,18 +76,42 @@ class BrainTech extends StatelessWidget {
           },
           child: const Text(
             "Contact",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
         ),
+        //  Sectors View
+        BrainTech.isLoggedIn
+            ? ElevatedButton(
+                onPressed: () {
+                  goToSectorsView(context);
+                },
+                child: const Text(
+                  "Sectors",
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+            : Container(),
+        //  Entrepreneurs View
+        BrainTech.isLoggedIn
+            ? ElevatedButton(
+                onPressed: () {
+                  goToEntrepreneursView(context);
+                },
+                child: const Text(
+                  "Entrepreneurs",
+                  style: TextStyle(fontSize: 20),
+                ),
+              )
+            : Container(),
         //  Login View
-        !isLoginView
+        !BrainTech.isLoggedIn
             ? ElevatedButton(
                 onPressed: () {
                   goToLoginView(context);
                 },
                 child: const Text(
                   "Login",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 20),
                 ),
               )
             : Container(),
@@ -131,6 +160,90 @@ class BrainTech extends StatelessWidget {
       ),
     );
   }
+
+  static goToSectorsView(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const Sectors(),
+      ),
+    );
+  }
+
+  static goToEntrepreneursView(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const Entrepreneurs(),
+      ),
+    );
+  }
+
+  static footer() {
+    return Expanded(
+        child: Container(
+      color: Colors.blue,
+      child: Column(
+        children: [
+          BrainTech.space(10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: const [
+                      Text(
+                        "ADDRESS",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text("Regus, Twickenham Building,"),
+                      Text("The Campus cnr Sloane and,"),
+                      Text("Main Rd, Bryanston,"),
+                      Text("Johannesburg, 2191"),
+                      Text("South Africa"),
+                    ],
+                  )),
+              Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: const [
+                      Text(
+                        "CONTACT",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text("PHONE: 011 575 4268"),
+                      Text("EMAIL ADDRESS: imvelisi@greenmatter.co.za"),
+                      Text(""),
+                      Text(""),
+                      Text(""),
+                    ],
+                  )),
+              Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      const Text(
+                        "JOIN NEWSLETTER",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      BrainTech.space(10),
+                      ElevatedButtonTheme(
+                          data: ElevatedButtonThemeData(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.grey))),
+                          child: ElevatedButton(
+                              onPressed: () {}, child: const Text("EMAIL"))),
+                      const Text(""),
+                      const Text(""),
+                      const Text(""),
+                    ],
+                  ))
+            ],
+          )
+        ],
+      ),
+    ));
+  }
 }
 
 class MyHomePage extends StatefulWidget {
@@ -145,14 +258,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           BrainTech.space(5),
-          BrainTech.navBar(context, false),
+          BrainTech.navBar(context),
           BrainTech.space(20),
           //  Imvelisi Logo
           ClipRRect(
@@ -183,73 +294,7 @@ class _MyHomePageState extends State<MyHomePage> {
             style: TextStyle(color: Colors.green, fontSize: 20),
           ),
           BrainTech.space(25),
-          Expanded(
-              child: Container(
-            color: Colors.blue,
-            child: Column(
-              children: [
-                BrainTech.space(10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: const [
-                            Text(
-                              "ADDRESS",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Text("Regus, Twickenham Building,"),
-                            Text("The Campus cnr Sloane and,"),
-                            Text("Main Rd, Bryanston,"),
-                            Text("Johannesburg, 2191"),
-                            Text("South Africa"),
-                          ],
-                        )),
-                    Expanded(
-                        flex: 2,
-                        child: Column(
-                          children: const [
-                            Text(
-                              "CONTACT",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Text("PHONE: 011 575 4268"),
-                            Text("EMAIL ADDRESS: imvelisi@greenmatter.co.za"),
-                            Text(""),
-                            Text(""),
-                            Text(""),
-                          ],
-                        )),
-                    Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: [
-                            const Text(
-                              "JOIN NEWSLETTER",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            BrainTech.space(10),
-                            ElevatedButtonTheme(
-                                data: ElevatedButtonThemeData(
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                Colors.grey))),
-                                child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text("EMAIL"))),
-                            const Text(""),
-                            const Text(""),
-                            const Text(""),
-                          ],
-                        ))
-                  ],
-                )
-              ],
-            ),
-          ))
+          BrainTech.footer()
         ],
       ),
     );

@@ -37,7 +37,7 @@ class _LoginRegisterState extends State<LoginRegister> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, true),
+          BrainTech.navBar(context),
           BrainTech.space(200),
           Center(
               child: Column(
@@ -63,6 +63,8 @@ class _LoginRegisterState extends State<LoginRegister> {
               )
             ],
           )),
+          BrainTech.space(100),
+          BrainTech.footer()
         ],
       ),
     );

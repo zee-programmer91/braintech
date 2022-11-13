@@ -19,8 +19,8 @@ class _EntrepreneursState extends State<Entrepreneurs> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, false),
-          Text("Entrepreneurs"),
+          BrainTech.navBar(context),
+          const Text("Entrepreneurs"),
         ],
       ),
     );

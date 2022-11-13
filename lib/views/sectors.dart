@@ -19,8 +19,29 @@ class _SectorsState extends State<Sectors> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, false),
-          Text("Sectors"),
+          BrainTech.navBar(context),
+          const SizedBox(
+            height: 30,
+          ),
+          TextField(
+            decoration: InputDecoration(
+                constraints: const BoxConstraints(maxWidth: 300),
+                labelText: "search here",
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none),
+                hintText: "eg. Water Harvesting",
+                prefixIcon: const Icon(Icons.search),
+                prefixIconColor: Colors.green),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: Image.asset(
+              "assets/images/FACT_SHEET.png",
+            ),
+          ),
         ],
       ),
     );

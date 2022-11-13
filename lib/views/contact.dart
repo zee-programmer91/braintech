@@ -19,8 +19,9 @@ class _ContactState extends State<Contact> {
           const SizedBox(
             height: 5,
           ),
-          BrainTech.navBar(context, false),
-          Text("Contact"),
+          BrainTech.navBar(context),
+          const Text("Contact"),
+          BrainTech.footer()
         ],
       ),
     );
